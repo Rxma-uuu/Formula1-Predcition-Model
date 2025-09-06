@@ -387,10 +387,10 @@ function createParticleEffect() {
 
 function getRandomColor() {
     const colors = [
-        'rgba(108, 92, 231, 0.6)',
-        'rgba(0, 206, 201, 0.6)',
-        'rgba(253, 121, 168, 0.6)',
-        'rgba(0, 255, 136, 0.6)'
+        'rgba(212, 0, 0, 0.6)',
+        'rgba(255, 215, 0, 0.6)',
+        'rgba(192, 192, 192, 0.6)',
+        'rgba(212, 0, 0, 0.4)'
     ];
     return colors[Math.floor(Math.random() * colors.length)];
 }
@@ -423,15 +423,17 @@ const additionalStyles = `
         text-align: center;
         margin-bottom: 1.5rem;
         padding-bottom: 1rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(212, 0, 0, 0.3);
     }
     
     .results-header h4 {
         font-family: var(--font-primary);
         font-size: 1.3rem;
         font-weight: 700;
-        color: var(--accent-blue);
+        color: var(--ferrari-red);
         margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
     
     .results-header p {
@@ -442,8 +444,12 @@ const additionalStyles = `
     .result-confidence {
         font-family: var(--font-primary);
         font-weight: 600;
-        color: var(--neon-green);
+        color: var(--ferrari-gold);
         font-size: 0.9rem;
+    }
+    
+    .error-notification {
+        background: linear-gradient(135deg, #D40000, #A30000) !important;
     }
 `;
 

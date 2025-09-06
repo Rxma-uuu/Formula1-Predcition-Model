@@ -3,56 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F1 Position Predictor | AI Racing Analytics</title>
+    <title>Ferrari F1 Position Predictor | Scuderia Analytics</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Futura:wght@300;400;500;600;700&family=Helvetica+Neue:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Animated Background -->
     <div class="bg-animation">
-        <div class="racing-lines"></div>
+        <div class="ferrari-lines"></div>
         <div class="particles"></div>
+        <div class="checkered-pattern"></div>
     </div>
 
     <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="logo">
-                <i class="fas fa-flag-checkered"></i>
-                <span class="logo-text">F1 <span class="accent">PREDICTOR</span></span>
+                <div class="ferrari-shield">
+                    <i class="fas fa-horse-head"></i>
+                </div>
+                <span class="logo-text">SCUDERIA <span class="ferrari-accent">PREDICTOR</span></span>
             </div>
             <nav class="nav">
                 <a href="#home" class="nav-link active">Home</a>
                 <a href="#predict" class="nav-link">Predict</a>
-                <a href="#stats" class="nav-link">Stats</a>
+                <a href="#about" class="nav-link">About</a>
             </nav>
         </div>
     </header>
+
+    <!-- Ferrari Cover Page -->
+    <section id="cover" class="ferrari-cover">
+        <div class="container">
+            <div class="cover-content">
+                <div class="ferrari-logo-large">
+                    <div class="prancing-horse">
+                        <i class="fas fa-horse-head"></i>
+                    </div>
+                    <div class="ferrari-wordmark">SCUDERIA FERRARI</div>
+                </div>
+                
+                <h1 class="cover-title">
+                    <span class="title-main">F1 POSITION</span>
+                    <span class="title-sub">PREDICTOR</span>
+                    <span class="title-tagline">Powered by AI & Racing Heritage</span>
+                </h1>
+                
+                <div class="racing-stripes">
+                    <div class="stripe"></div>
+                    <div class="stripe"></div>
+                    <div class="stripe"></div>
+                </div>
+                
+                <div class="cover-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">16</div>
+                        <div class="stat-label">Constructors' Championships</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">Drivers' Championships</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">243</div>
+                        <div class="stat-label">Grand Prix Victories</div>
+                    </div>
+                </div>
+                
+                <button class="ferrari-cta" onclick="scrollToPredict()">
+                    <span>ENTER PADDOCK</span>
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <div class="attribution">
+                    <div class="created-by">
+                        <span>Done by</span>
+                        <a href="https://www.linkedin.com/in/ramanujam-r-95867b303/" target="_blank" class="creator-link">
+                            <strong>Ramanujam</strong>
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cover-visual">
+                <div class="ferrari-car">
+                    <i class="fas fa-car-side"></i>
+                </div>
+                <div class="speed-trails"></div>
+                <div class="checkered-flag">
+                    <i class="fas fa-flag-checkered"></i>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    <span class="title-line">FORMULA 1</span>
-                    <span class="title-line accent-gradient">POSITION PREDICTOR</span>
-                    <span class="title-subtitle">AI-Powered Racing Analytics</span>
+                    <span class="title-line">SCUDERIA FERRARI</span>
+                    <span class="title-line ferrari-gradient">POSITION PREDICTOR</span>
+                    <span class="title-subtitle">Precision. Performance. Prediction.</span>
                 </h1>
                 <p class="hero-description">
-                    Harness the power of machine learning to predict race outcomes with precision. 
-                    Advanced algorithms analyze driver performance, track conditions, and historical data.
+                    Experience the fusion of Ferrari's racing heritage with cutting-edge AI technology. 
+                    Our advanced algorithms analyze driver performance, track conditions, and decades of racing data.
                 </p>
-                <button class="cta-button" onclick="scrollToPredict()">
-                    <span>START PREDICTION</span>
-                    <i class="fas fa-rocket"></i>
+                <button class="ferrari-button" onclick="scrollToPredict()">
+                    <span>START ANALYSIS</span>
+                    <i class="fas fa-tachometer-alt"></i>
                 </button>
             </div>
             <div class="hero-visual">
-                <div class="racing-car">
+                <div class="ferrari-f1-car">
                     <i class="fas fa-car-side"></i>
                 </div>
-                <div class="speed-lines"></div>
+                <div class="ferrari-speed-lines"></div>
             </div>
         </div>
     </section>
@@ -61,14 +131,17 @@
     <section id="predict" class="prediction-section">
         <div class="container">
             <h2 class="section-title">
-                <span class="title-icon"><i class="fas fa-brain"></i></span>
-                AI RACE PREDICTION
+                <span class="title-icon"><i class="fas fa-trophy"></i></span>
+                SCUDERIA AI PREDICTION
             </h2>
             
             <div class="prediction-container">
                 <!-- Input Panel -->
-                <div class="glass-card input-panel">
-                    <h3 class="card-title">Race Configuration</h3>
+                <div class="ferrari-card input-panel">
+                    <h3 class="card-title">
+                        <i class="fas fa-cog"></i>
+                        Race Configuration
+                    </h3>
                     
                     <form id="predictionForm" class="prediction-form">
                         <div class="form-group">
@@ -88,21 +161,24 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="predict-button" id="predictButton">
-                            <span class="button-text">PREDICT RACE</span>
-                            <span class="button-icon"><i class="fas fa-bolt"></i></span>
+                        <button type="submit" class="ferrari-predict-button" id="predictButton">
+                            <span class="button-text">ANALYZE RACE</span>
+                            <span class="button-icon"><i class="fas fa-flag-checkered"></i></span>
                             <div class="button-glow"></div>
                         </button>
                     </form>
                 </div>
 
                 <!-- Results Panel -->
-                <div class="glass-card results-panel" id="resultsPanel">
-                    <h3 class="card-title">Prediction Results</h3>
+                <div class="ferrari-card results-panel" id="resultsPanel">
+                    <h3 class="card-title">
+                        <i class="fas fa-chart-line"></i>
+                        Prediction Results
+                    </h3>
                     <div class="results-content" id="resultsContent">
                         <div class="no-results">
-                            <i class="fas fa-chart-line"></i>
-                            <p>Configure race settings and click predict to see AI-powered results</p>
+                            <i class="fas fa-trophy"></i>
+                            <p>Configure race settings and click analyze to see Ferrari AI-powered results</p>
                         </div>
                     </div>
                 </div>
@@ -118,8 +194,8 @@
                 <div class="spinner-ring"></div>
                 <div class="spinner-ring"></div>
             </div>
-            <h3>AI PROCESSING</h3>
-            <p>Analyzing race data and generating predictions...</p>
+            <h3>SCUDERIA AI PROCESSING</h3>
+            <p>Analyzing race data with Ferrari precision...</p>
         </div>
     </div>
 

@@ -7,26 +7,28 @@
 
 :root {
     /* Color Palette */
-    --primary-bg: #0a0a0f;
-    --secondary-bg: #1a1a2e;
-    --accent-purple: #6c5ce7;
-    --accent-blue: #00cec9;
-    --accent-red: #fd79a8;
-    --neon-green: #00ff88;
+    --primary-bg: #0d0d0d;
+    --secondary-bg: #1a1a1a;
+    --ferrari-red: #D40000;
+    --ferrari-dark-red: #A30000;
+    --ferrari-black: #000000;
+    --ferrari-white: #FFFFFF;
+    --ferrari-silver: #C0C0C0;
+    --ferrari-gold: #FFD700;
     --text-primary: #ffffff;
-    --text-secondary: #a0a0a0;
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-secondary: #cccccc;
+    --ferrari-glass-bg: rgba(212, 0, 0, 0.1);
+    --ferrari-glass-border: rgba(212, 0, 0, 0.3);
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --gradient-neon: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    --gradient-racing: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 50%, #45b7d1 100%);
+    --gradient-ferrari: linear-gradient(135deg, #D40000 0%, #A30000 100%);
+    --gradient-ferrari-gold: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    --gradient-ferrari-silver: linear-gradient(135deg, #C0C0C0 0%, #808080 100%);
+    --gradient-ferrari-dark: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
     
     /* Fonts */
-    --font-primary: 'Orbitron', monospace;
-    --font-secondary: 'Rajdhani', sans-serif;
+    --font-primary: 'Inter', 'Helvetica Neue', sans-serif;
+    --font-secondary: 'Inter', 'Helvetica Neue', sans-serif;
     
     /* Spacing */
     --container-padding: 2rem;
@@ -55,25 +57,40 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+    background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #000000 100%);
 }
 
-.racing-lines {
+.ferrari-lines {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-image: 
-        linear-gradient(90deg, transparent 0%, rgba(108, 92, 231, 0.1) 50%, transparent 100%),
-        linear-gradient(0deg, transparent 0%, rgba(0, 206, 201, 0.1) 50%, transparent 100%);
+        linear-gradient(90deg, transparent 0%, rgba(212, 0, 0, 0.2) 50%, transparent 100%),
+        linear-gradient(0deg, transparent 0%, rgba(212, 0, 0, 0.1) 50%, transparent 100%);
     background-size: 200px 200px;
-    animation: racingLines 20s linear infinite;
+    animation: ferrariLines 20s linear infinite;
 }
 
-@keyframes racingLines {
+@keyframes ferrariLines {
     0% { transform: translate(0, 0); }
     100% { transform: translate(200px, 200px); }
+}
+
+.checkered-pattern {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(45deg, transparent 25%, rgba(255, 255, 255, 0.02) 25%, rgba(255, 255, 255, 0.02) 50%, transparent 50%, transparent 75%, rgba(255, 255, 255, 0.02) 75%);
+    background-size: 40px 40px;
+    animation: checkeredMove 30s linear infinite;
+}
+
+@keyframes checkeredMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(40px, 40px); }
 }
 
 .particles {
@@ -81,10 +98,10 @@ body {
     width: 100%;
     height: 100%;
     background-image: 
-        radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
-        radial-gradient(2px 2px at 40px 70px, rgba(108, 92, 231, 0.4), transparent),
-        radial-gradient(1px 1px at 90px 40px, rgba(0, 206, 201, 0.3), transparent),
-        radial-gradient(1px 1px at 130px 80px, rgba(253, 121, 168, 0.3), transparent);
+        radial-gradient(2px 2px at 20px 30px, rgba(212, 0, 0, 0.4), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255, 215, 0, 0.3), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(192, 192, 192, 0.3), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(212, 0, 0, 0.2), transparent);
     background-repeat: repeat;
     background-size: 200px 200px;
     animation: particles 15s linear infinite;
@@ -101,9 +118,9 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(10, 10, 15, 0.9);
+    background: rgba(13, 13, 13, 0.95);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--ferrari-glass-border);
     z-index: 1000;
     transition: all 0.3s ease;
 }
@@ -120,23 +137,34 @@ body {
     align-items: center;
     gap: 0.5rem;
     font-family: var(--font-primary);
-    font-weight: 900;
+    font-weight: 800;
     font-size: 1.5rem;
 }
 
-.logo i {
-    color: var(--accent-red);
-    font-size: 2rem;
-    animation: pulse 2s infinite;
+.ferrari-shield {
+    background: var(--gradient-ferrari);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(212, 0, 0, 0.5);
 }
 
-@keyframes pulse {
+.ferrari-shield i {
+    color: var(--ferrari-white);
+    font-size: 1.2rem;
+    animation: ferrariPulse 2s infinite;
+}
+
+@keyframes ferrariPulse {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.1); }
 }
 
-.accent {
-    background: var(--gradient-accent);
+.ferrari-accent {
+    background: var(--gradient-ferrari);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -150,14 +178,17 @@ body {
 .nav-link {
     color: var(--text-secondary);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     transition: all 0.3s ease;
     position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
 }
 
 .nav-link:hover,
 .nav-link.active {
-    color: var(--text-primary);
+    color: var(--ferrari-red);
 }
 
 .nav-link::after {
@@ -167,13 +198,274 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--gradient-neon);
+    background: var(--gradient-ferrari);
     transition: width 0.3s ease;
 }
 
 .nav-link:hover::after,
 .nav-link.active::after {
     width: 100%;
+}
+
+/* Ferrari Cover Page */
+.ferrari-cover {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: var(--section-padding);
+    position: relative;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #0d0d0d 100%);
+}
+
+.ferrari-cover .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.ferrari-logo-large {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.prancing-horse {
+    background: var(--gradient-ferrari);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    box-shadow: 0 0 40px rgba(212, 0, 0, 0.6);
+    animation: ferrariGlow 3s ease-in-out infinite;
+}
+
+@keyframes ferrariGlow {
+    0%, 100% { box-shadow: 0 0 40px rgba(212, 0, 0, 0.6); }
+    50% { box-shadow: 0 0 60px rgba(212, 0, 0, 0.8); }
+}
+
+.prancing-horse i {
+    color: var(--ferrari-white);
+    font-size: 3rem;
+}
+
+.ferrari-wordmark {
+    font-family: var(--font-primary);
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--ferrari-red);
+    letter-spacing: 3px;
+}
+
+.cover-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.title-main {
+    display: block;
+    font-family: var(--font-primary);
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--ferrari-white);
+    letter-spacing: 2px;
+    animation: slideInLeft 1s ease-out;
+}
+
+.title-sub {
+    display: block;
+    font-family: var(--font-primary);
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: var(--gradient-ferrari);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 2px;
+    animation: slideInLeft 1s ease-out 0.2s both;
+}
+
+.title-tagline {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--ferrari-silver);
+    margin-top: 1rem;
+    animation: slideInLeft 1s ease-out 0.4s both;
+}
+
+.racing-stripes {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.stripe {
+    width: 60px;
+    height: 4px;
+    background: var(--gradient-ferrari);
+    border-radius: 2px;
+    animation: stripeGlow 2s ease-in-out infinite;
+}
+
+.stripe:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.stripe:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes stripeGlow {
+    0%, 100% { opacity: 0.6; transform: scaleX(1); }
+    50% { opacity: 1; transform: scaleX(1.2); }
+}
+
+.cover-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-family: var(--font-primary);
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--ferrari-red);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+}
+
+.ferrari-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--gradient-ferrari);
+    color: var(--ferrari-white);
+    border: none;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 2rem auto;
+    display: block;
+    width: fit-content;
+}
+
+.ferrari-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(212, 0, 0, 0.5);
+}
+
+.attribution {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(212, 0, 0, 0.3);
+}
+
+.created-by {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.creator-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--ferrari-red);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.creator-link:hover {
+    color: var(--ferrari-white);
+    transform: translateY(-2px);
+}
+
+.creator-link i {
+    font-size: 1.2rem;
+}
+
+.cover-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ferrari-car {
+    font-size: 8rem;
+    color: var(--ferrari-red);
+    position: relative;
+    z-index: 2;
+    animation: ferrariFloat 3s ease-in-out infinite;
+}
+
+@keyframes ferrariFloat {
+    0%, 100% { transform: translateY(0px) rotate(-5deg); }
+    50% { transform: translateY(-20px) rotate(-5deg); }
+}
+
+.speed-trails {
+    position: absolute;
+    width: 200%;
+    height: 6px;
+    background: var(--gradient-ferrari);
+    left: -100%;
+    top: 60%;
+    transform: translateY(-50%);
+    animation: speedTrails 2s ease-in-out infinite;
+    border-radius: 3px;
+}
+
+@keyframes speedTrails {
+    0% { width: 0%; left: 0%; opacity: 1; }
+    50% { width: 100%; left: 0%; opacity: 0.8; }
+    100% { width: 0%; left: 100%; opacity: 0; }
+}
+
+.checkered-flag {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    font-size: 3rem;
+    color: var(--ferrari-silver);
+    animation: flagWave 2s ease-in-out infinite;
+}
+
+@keyframes flagWave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    75% { transform: rotate(-10deg); }
 }
 
 /* Hero Section */
@@ -195,7 +487,7 @@ body {
 .hero-title {
     font-family: var(--font-primary);
     font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 900;
+    font-weight: 800;
     line-height: 1.1;
     margin-bottom: 1.5rem;
 }
@@ -212,12 +504,12 @@ body {
 .title-subtitle {
     font-size: 1.2rem;
     font-weight: 400;
-    color: var(--text-secondary);
+    color: var(--ferrari-silver);
     animation-delay: 0.4s;
 }
 
-.accent-gradient {
-    background: var(--gradient-racing);
+.ferrari-gradient {
+    background: var(--gradient-ferrari);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -239,6 +531,7 @@ body {
     color: var(--text-secondary);
     margin-bottom: 2rem;
     animation: fadeInUp 1s ease-out 0.6s both;
+    line-height: 1.7;
 }
 
 @keyframes fadeInUp {
@@ -252,14 +545,14 @@ body {
     }
 }
 
-.cta-button {
+.ferrari-button {
     display: inline-flex;
     align-items: center;
     gap: 1rem;
-    background: var(--gradient-neon);
-    color: var(--primary-bg);
+    background: var(--gradient-ferrari);
+    color: var(--ferrari-white);
     border: none;
-    padding: 1rem 2rem;
+    padding: 1.2rem 2.5rem;
     border-radius: 50px;
     font-family: var(--font-primary);
     font-weight: 700;
@@ -269,14 +562,16 @@ body {
     position: relative;
     overflow: hidden;
     animation: fadeInUp 1s ease-out 0.8s both;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.cta-button:hover {
+.ferrari-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4);
+    box-shadow: 0 15px 40px rgba(212, 0, 0, 0.5);
 }
 
-.cta-button::before {
+.ferrari-button::before {
     content: '';
     position: absolute;
     top: 0;
@@ -287,7 +582,7 @@ body {
     transition: left 0.5s;
 }
 
-.cta-button:hover::before {
+.ferrari-button:hover::before {
     left: 100%;
 }
 
@@ -310,31 +605,27 @@ body {
     }
 }
 
-.racing-car {
+.ferrari-f1-car {
     font-size: 8rem;
-    color: var(--accent-red);
+    color: var(--ferrari-red);
     position: relative;
     z-index: 2;
-    animation: float 3s ease-in-out infinite;
+    animation: ferrariFloat 3s ease-in-out infinite;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-}
-
-.speed-lines {
+.ferrari-speed-lines {
     position: absolute;
     width: 200%;
-    height: 4px;
-    background: var(--gradient-neon);
+    height: 6px;
+    background: var(--gradient-ferrari);
     left: -100%;
     top: 50%;
     transform: translateY(-50%);
-    animation: speedLines 2s ease-in-out infinite;
+    animation: ferrariSpeedLines 2s ease-in-out infinite;
+    border-radius: 3px;
 }
 
-@keyframes speedLines {
+@keyframes ferrariSpeedLines {
     0% { width: 0%; left: 0%; }
     50% { width: 100%; left: 0%; }
     100% { width: 0%; left: 100%; }
@@ -350,17 +641,19 @@ body {
     text-align: center;
     font-family: var(--font-primary);
     font-size: 2.5rem;
-    font-weight: 900;
+    font-weight: 800;
     margin-bottom: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .title-icon {
-    color: var(--accent-purple);
-    animation: pulse 2s infinite;
+    color: var(--ferrari-red);
+    animation: ferrariPulse 2s infinite;
 }
 
 .prediction-container {
@@ -371,37 +664,38 @@ body {
     margin: 0 auto;
 }
 
-/* Glass Card Effect */
-.glass-card {
-    background: var(--glass-bg);
+/* Ferrari Card Effect */
+.ferrari-card {
+    background: var(--ferrari-glass-bg);
     backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
+    border: 1px solid var(--ferrari-glass-border);
     border-radius: 20px;
     padding: 2rem;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(212, 0, 0, 0.1);
 }
 
-.glass-card::before {
+.ferrari-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    background: linear-gradient(90deg, transparent, rgba(212, 0, 0, 0.1), transparent);
     transition: left 0.8s;
 }
 
-.glass-card:hover::before {
+.ferrari-card:hover::before {
     left: 100%;
 }
 
-.glass-card:hover {
+.ferrari-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(212, 0, 0, 0.5);
+    box-shadow: 0 20px 40px rgba(212, 0, 0, 0.2);
 }
 
 .card-title {
@@ -413,6 +707,12 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-title i {
+    color: var(--ferrari-red);
 }
 
 /* Form Styles */
@@ -429,11 +729,11 @@ body {
 }
 
 .form-group label {
-    font-weight: 600;
-    color: var(--text-primary);
+    font-weight: 700;
+    color: var(--ferrari-red);
     font-size: 0.9rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 .select-wrapper {
@@ -443,20 +743,21 @@ body {
 .select-wrapper select {
     width: 100%;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--glass-border);
+    background: rgba(212, 0, 0, 0.05);
+    border: 1px solid var(--ferrari-glass-border);
     border-radius: 10px;
     color: var(--text-primary);
     font-size: 1rem;
     appearance: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-weight: 500;
 }
 
 .select-wrapper select:focus {
     outline: none;
-    border-color: var(--accent-blue);
-    box-shadow: 0 0 20px rgba(0, 206, 201, 0.3);
+    border-color: var(--ferrari-red);
+    box-shadow: 0 0 20px rgba(212, 0, 0, 0.3);
 }
 
 .select-icon {
@@ -464,7 +765,7 @@ body {
     right: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--text-secondary);
+    color: var(--ferrari-red);
     pointer-events: none;
 }
 
@@ -478,7 +779,9 @@ body {
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    color: var(--accent-blue);
+    color: var(--ferrari-red);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .drivers-container {
@@ -495,12 +798,12 @@ body {
 }
 
 .drivers-container::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(212, 0, 0, 0.1);
     border-radius: 3px;
 }
 
 .drivers-container::-webkit-scrollbar-thumb {
-    background: var(--accent-purple);
+    background: var(--ferrari-red);
     border-radius: 3px;
 }
 
@@ -509,43 +812,44 @@ body {
     flex-direction: column;
     gap: 0.5rem;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(212, 0, 0, 0.05);
+    border: 1px solid rgba(212, 0, 0, 0.1);
     border-radius: 10px;
     transition: all 0.3s ease;
 }
 
 .driver-input:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(212, 0, 0, 0.08);
+    border-color: rgba(212, 0, 0, 0.2);
 }
 
 .driver-name {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-primary);
     font-size: 0.9rem;
 }
 
 .driver-input input {
     padding: 0.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--glass-border);
+    background: rgba(212, 0, 0, 0.05);
+    border: 1px solid var(--ferrari-glass-border);
     border-radius: 5px;
     color: var(--text-primary);
     font-size: 0.9rem;
     text-align: center;
     transition: all 0.3s ease;
+    font-weight: 600;
 }
 
 .driver-input input:focus {
     outline: none;
-    border-color: var(--accent-blue);
-    box-shadow: 0 0 10px rgba(0, 206, 201, 0.3);
+    border-color: var(--ferrari-red);
+    box-shadow: 0 0 10px rgba(212, 0, 0, 0.3);
 }
 
-/* Predict Button */
-.predict-button {
-    background: var(--gradient-racing);
+/* Ferrari Predict Button */
+.ferrari-predict-button {
+    background: var(--gradient-ferrari);
     border: none;
     border-radius: 15px;
     padding: 1.5rem 2rem;
@@ -562,14 +866,16 @@ body {
     justify-content: center;
     gap: 1rem;
     margin-top: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.predict-button:hover {
+.ferrari-predict-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
+    box-shadow: 0 15px 35px rgba(212, 0, 0, 0.5);
 }
 
-.predict-button:active {
+.ferrari-predict-button:active {
     transform: translateY(-1px);
 }
 
@@ -583,7 +889,7 @@ body {
     transition: left 0.6s;
 }
 
-.predict-button:hover .button-glow {
+.ferrari-predict-button:hover .button-glow {
     left: 100%;
 }
 
@@ -614,7 +920,7 @@ body {
 .no-results i {
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: var(--accent-purple);
+    color: var(--ferrari-red);
     opacity: 0.5;
 }
 
@@ -629,28 +935,29 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(212, 0, 0, 0.05);
+    border: 1px solid rgba(212, 0, 0, 0.1);
     border-radius: 10px;
     transition: all 0.3s ease;
     animation: slideInRight 0.5s ease-out;
 }
 
 .result-item:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(212, 0, 0, 0.08);
     transform: translateX(5px);
+    border-color: rgba(212, 0, 0, 0.2);
 }
 
 .result-position {
     font-family: var(--font-primary);
     font-weight: 900;
     font-size: 1.2rem;
-    color: var(--accent-blue);
+    color: var(--ferrari-red);
     min-width: 40px;
 }
 
 .result-driver {
-    font-weight: 600;
+    font-weight: 700;
     flex: 1;
     margin-left: 1rem;
 }
@@ -673,7 +980,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10, 10, 15, 0.9);
+    background: rgba(13, 13, 13, 0.95);
     backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
@@ -706,7 +1013,7 @@ body {
     width: 100%;
     height: 100%;
     border: 3px solid transparent;
-    border-top: 3px solid var(--accent-blue);
+    border-top: 3px solid var(--ferrari-red);
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
@@ -716,7 +1023,7 @@ body {
     height: 60px;
     top: 10px;
     left: 10px;
-    border-top-color: var(--accent-purple);
+    border-top-color: var(--ferrari-gold);
     animation-duration: 0.8s;
     animation-direction: reverse;
 }
@@ -726,7 +1033,7 @@ body {
     height: 40px;
     top: 20px;
     left: 20px;
-    border-top-color: var(--accent-red);
+    border-top-color: var(--ferrari-silver);
     animation-duration: 0.6s;
 }
 
@@ -740,7 +1047,9 @@ body {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: var(--accent-blue);
+    color: var(--ferrari-red);
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 /* Success Animation */
@@ -762,7 +1071,7 @@ body {
 
 .checkmark-container {
     font-size: 4rem;
-    color: var(--neon-green);
+    color: var(--ferrari-red);
     animation: checkmarkPop 0.6s ease-out;
 }
 
@@ -794,6 +1103,12 @@ body {
         gap: 2rem;
     }
     
+    .ferrari-cover .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
     .drivers-container {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
@@ -816,13 +1131,18 @@ body {
         font-size: 2.5rem;
     }
     
+    .title-main,
+    .title-sub {
+        font-size: 2.5rem;
+    }
+    
     .section-title {
         font-size: 2rem;
         flex-direction: column;
         gap: 0.5rem;
     }
     
-    .glass-card {
+    .ferrari-card {
         padding: 1.5rem;
     }
     
@@ -831,8 +1151,14 @@ body {
         max-height: 300px;
     }
     
-    .racing-car {
+    .ferrari-f1-car,
+    .ferrari-car {
         font-size: 4rem;
+    }
+    
+    .cover-stats {
+        flex-direction: column;
+        gap: 1rem;
     }
 }
 
@@ -841,17 +1167,32 @@ body {
         font-size: 2rem;
     }
     
-    .cta-button {
+    .title-main,
+    .title-sub {
+        font-size: 2rem;
+    }
+    
+    .ferrari-button,
+    .ferrari-cta {
         padding: 0.8rem 1.5rem;
         font-size: 0.9rem;
     }
     
-    .glass-card {
+    .ferrari-card {
         padding: 1rem;
     }
     
-    .predict-button {
+    .ferrari-predict-button {
         padding: 1rem 1.5rem;
         font-size: 1rem;
+    }
+    
+    .prancing-horse {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .prancing-horse i {
+        font-size: 2rem;
     }
 }
