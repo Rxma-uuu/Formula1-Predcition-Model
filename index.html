@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Position Predictor | AI Racing Analytics</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="racing-lines"></div>
+        <div class="particles"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-flag-checkered"></i>
+                <span class="logo-text">F1 <span class="accent">PREDICTOR</span></span>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#predict" class="nav-link">Predict</a>
+                <a href="#stats" class="nav-link">Stats</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line">FORMULA 1</span>
+                    <span class="title-line accent-gradient">POSITION PREDICTOR</span>
+                    <span class="title-subtitle">AI-Powered Racing Analytics</span>
+                </h1>
+                <p class="hero-description">
+                    Harness the power of machine learning to predict race outcomes with precision. 
+                    Advanced algorithms analyze driver performance, track conditions, and historical data.
+                </p>
+                <button class="cta-button" onclick="scrollToPredict()">
+                    <span>START PREDICTION</span>
+                    <i class="fas fa-rocket"></i>
+                </button>
+            </div>
+            <div class="hero-visual">
+                <div class="racing-car">
+                    <i class="fas fa-car-side"></i>
+                </div>
+                <div class="speed-lines"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prediction Section -->
+    <section id="predict" class="prediction-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-icon"><i class="fas fa-brain"></i></span>
+                AI RACE PREDICTION
+            </h2>
+            
+            <div class="prediction-container">
+                <!-- Input Panel -->
+                <div class="glass-card input-panel">
+                    <h3 class="card-title">Race Configuration</h3>
+                    
+                    <form id="predictionForm" class="prediction-form">
+                        <div class="form-group">
+                            <label for="race-select">Select Race</label>
+                            <div class="select-wrapper">
+                                <select id="race-select" name="race" required>
+                                    <option value="">Choose a race...</option>
+                                </select>
+                                <i class="fas fa-chevron-down select-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="drivers-grid" id="driversGrid">
+                            <h4 class="drivers-title">Grid Positions</h4>
+                            <div class="drivers-container">
+                                <!-- Driver inputs will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <button type="submit" class="predict-button" id="predictButton">
+                            <span class="button-text">PREDICT RACE</span>
+                            <span class="button-icon"><i class="fas fa-bolt"></i></span>
+                            <div class="button-glow"></div>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results Panel -->
+                <div class="glass-card results-panel" id="resultsPanel">
+                    <h3 class="card-title">Prediction Results</h3>
+                    <div class="results-content" id="resultsContent">
+                        <div class="no-results">
+                            <i class="fas fa-chart-line"></i>
+                            <p>Configure race settings and click predict to see AI-powered results</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner">
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+            </div>
+            <h3>AI PROCESSING</h3>
+            <p>Analyzing race data and generating predictions...</p>
+        </div>
+    </div>
+
+    <!-- Success Animation -->
+    <div class="success-animation" id="successAnimation">
+        <div class="checkmark-container">
+            <i class="fas fa-check-circle"></i>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
